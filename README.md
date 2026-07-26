@@ -2,7 +2,7 @@
 
 A simple, accessible web app for searching books using the [Google Books
 API](https://developers.google.com/books). No installation, build step,
-or backend required — just open it in a browser.
+or backend required. Just open it in a browser.
 
 ## Features
 
@@ -77,7 +77,7 @@ search.
 - The Google Books API is occasionally slow or briefly unavailable
   (a known upstream quirk, not specific to this app). The app
   automatically retries a failed request a couple of times before
-  showing an error — if you do see an error, searching again
+  showing an error. If you do see an error, searching again
   usually resolves it.
 - Aggregate stats (most common author, date range) reflect the results
   fetched so far for a search, not every possible match, since very
