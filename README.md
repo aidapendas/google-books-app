@@ -4,17 +4,15 @@ A simple, accessible web app for searching books using the [Google Books
 API](https://developers.google.com/books). No installation, build step,
 or backend required — just open it in a browser.
 
-**Live demo:** https://aidapendas.github.io/google-books-app/
-
 ## Features
 
-- Search any book title, author, or topic
-- Results shown 10 at a time, with easy pagination
-- Click any result to expand and read its description
+- Search any book title, author, or topic.
+- Results shown 10 at a time, with easy pagination.
+- Click any result to expand and read its description.
 - At-a-glance search summary: total results, most common author, earliest
-  and most recent publication dates, and API response time
+  and most recent publication dates, and API response time.
 - Built with accessibility in mind: keyboard-friendly, screen-reader
-  labels, and visible focus states throughout
+  labels, and visible focus states throughout.
 
 ## Getting Started
 
@@ -79,7 +77,7 @@ search.
 - The Google Books API is occasionally slow or briefly unavailable
   (a known upstream quirk, not specific to this app). The app
   automatically retries a failed request a couple of times before
-  showing an error — if you do see an error, simply searching again
+  showing an error — if you do see an error, searching again
   usually resolves it.
 - Aggregate stats (most common author, date range) reflect the results
   fetched so far for a search, not every possible match, since very
