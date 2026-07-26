@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Books Search</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Google Books Search</h1>
+    <form id="search-form" role="search">
+      <label for="search-input">Search for books</label>
+      <div class="search-row">
+        <input
+          type="text"
+          id="search-input"
+          name="q"
+          placeholder="e.g. The Hobbit"
+          autocomplete="off"
+          required
+        />
+        <button type="submit">Search</button>
+      </div>
+    </form>
+  </header>
+
+  <main id="main">
+    <!-- Aggregated search data -->
+    <section id="summary" aria-live="polite" hidden>
+      <h2>Search Summary</h2>
+      <ul id="summary-list"></ul>
+    </section>
+
+    <!-- Status / errors -->
+    <p id="status" role="status" aria-live="polite"></p>
+
+    <!-- Results -->
+    <section aria-labelledby="results-heading">
+      <h2 id="results-heading" class="visually-hidden">Results</h2>
+      <ul id="results-list"></ul>
+    </section>
+
+    <!-- Pagination controls -->
+    <nav id="pagination" aria-label="Search results pages" hidden>
+      <button type="button" id="prev-page">Previous</button>
+      <span id="page-indicator" aria-live="polite"></span>
+      <button type="button" id="next-page">Next</button>
+    </nav>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
