@@ -18,9 +18,7 @@ const API_BASE = "https://www.googleapis.com/books/v1/volumes";
 const BATCH_SIZE = 40; // Google Books API max per request
 const PAGE_SIZE = 10;
 
-// API_KEY comes from config.js (loaded before this file in index.html).
-// See config.example.js for setup instructions — real keys live in
-// config.js, which is git-ignored and never committed to the repo.
+const API_KEY = "AIzaSyD2R2GnPPFmhvDjClJpcU8CCMTx26acOsI";
 
 const state = {
   query: "",
