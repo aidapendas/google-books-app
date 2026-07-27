@@ -2,9 +2,7 @@
 
 A simple, accessible web app for searching books using the [Google Books
 API](https://developers.google.com/books). No installation, build step,
-or backend required — just open it in a browser.
-
-**Live demo:** https://aidapendas.github.io/google-books-app/
+or backend required.
 
 ## Features
 
@@ -93,9 +91,9 @@ Feel free to use, modify, or build on this project.
 
 Documentation used while building and verifying this project:
 
-- [Google Books API — Using the API](https://developers.google.com/books/docs/v1/using) — query parameters (`q`, `startIndex`, `maxResults`, `key`) and general usage
-- [Google Books API — Volume resource reference](https://developers.google.com/books/docs/v1/reference/volumes) — the exact response schema this app relies on (`volumeInfo.title`, `.authors`, `.publishedDate`, `.description`, and confirmation that descriptions may contain simple HTML formatting)
-- [MDN — Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) — the core mechanism used for all API calls
-- [MDN — CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) — why this app can call the API directly from the browser with no backend
-- [MDN — ARIA: aria-expanded](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded) — used for the expandable result pattern
-- [DOMPurify](https://github.com/cure53/DOMPurify) — sanitizes book descriptions before rendering as HTML, since the API docs confirm descriptions may contain formatting tags, and any content from an external API should be treated as untrusted before insertion into the DOM
+- [Google Books API — Using the API](https://developers.google.com/books/docs/v1/using) — query parameters (`q`, `startIndex`, `maxResults`, `key`) and general usage.
+- [Google Books API — Volume resource reference](https://developers.google.com/books/docs/v1/reference/volumes) — the exact response schema this app relies on (`volumeInfo.title`, `.authors`, `.publishedDate`, `.description`, and confirmation that descriptions may contain simple HTML formatting).
+- [MDN — Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) — the core mechanism used for all API calls.
+- [MDN — CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) — why this app can call the API directly from the browser with no backend.
+- [MDN — ARIA: aria-expanded](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded) — used for the expandable result pattern.
+- [DOMPurify](https://github.com/cure53/DOMPurify) — sanitises book descriptions before rendering as HTML, since the API docs confirm descriptions may contain formatting tags, and any content from an external API should be treated as untrusted before insertion into the DOM.
