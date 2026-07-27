@@ -2,17 +2,19 @@
 
 A simple, accessible web app for searching books using the [Google Books
 API](https://developers.google.com/books). No installation, build step,
-or backend required. Just open it in a browser.
+or backend required — just open it in a browser.
+
+**Live demo:** https://aidapendas.github.io/google-books-app/
 
 ## Features
 
-- Search any book title, author, or topic.
-- Results shown 10 at a time, with easy pagination.
-- Click any result to expand and read its description.
+- Search any book title, author, or topic
+- Results shown 10 at a time, with easy pagination
+- Click any result to expand and read its description
 - At-a-glance search summary: total results, most common author, earliest
-  and most recent publication dates, and API response time.
+  and most recent publication dates, and API response time
 - Built with accessibility in mind: keyboard-friendly, screen-reader
-  labels, and visible focus states throughout.
+  labels, and visible focus states throughout
 
 ## Getting Started
 
@@ -77,7 +79,7 @@ search.
 - The Google Books API is occasionally slow or briefly unavailable
   (a known upstream quirk, not specific to this app). The app
   automatically retries a failed request a couple of times before
-  showing an error. If you do see an error, searching again
+  showing an error — if you do see an error, simply searching again
   usually resolves it.
 - Aggregate stats (most common author, date range) reflect the results
   fetched so far for a search, not every possible match, since very
@@ -86,3 +88,14 @@ search.
 ## License
 
 Feel free to use, modify, or build on this project.
+
+## References
+
+Documentation used while building and verifying this project:
+
+- [Google Books API — Using the API](https://developers.google.com/books/docs/v1/using) — query parameters (`q`, `startIndex`, `maxResults`, `key`) and general usage
+- [Google Books API — Volume resource reference](https://developers.google.com/books/docs/v1/reference/volumes) — the exact response schema this app relies on (`volumeInfo.title`, `.authors`, `.publishedDate`, `.description`, and confirmation that descriptions may contain simple HTML formatting)
+- [MDN — Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) — the core mechanism used for all API calls
+- [MDN — CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) — why this app can call the API directly from the browser with no backend
+- [MDN — ARIA: aria-expanded](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded) — used for the expandable result pattern
+- [DOMPurify](https://github.com/cure53/DOMPurify) — sanitizes book descriptions before rendering as HTML, since the API docs confirm descriptions may contain formatting tags, and any content from an external API should be treated as untrusted before insertion into the DOM

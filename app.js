@@ -14,14 +14,16 @@
  */
 
 const API_BASE = "https://www.googleapis.com/books/v1/volumes";
-const BATCH_SIZE = 40; // Google Books API max per request.
+const BATCH_SIZE = 40; // Google Books API max per request
 const PAGE_SIZE = 10;
 
-const API_KEY = "AIzaSyD2R2GnPPFmhvDjClJpcU8CCMTx26acOsI";
+// API_KEY comes from config.js (loaded before this file in index.html).
+// See config.example.js for setup instructions — real keys live in
+// config.js, which is git-ignored and never committed to the repo.
 
 const state = {
   query: "",
-  items: [], // All items fetched so far for the current query
+  items: [], // all items fetched so far for the current query
   totalItems: 0,
   currentPage: 0, // 0-indexed
   lastResponseTimeMs: null,
@@ -205,8 +207,8 @@ function getMostCommonAuthor(authorCounts) {
 
 /**
  * Google Books publishedDate is inconsistently formatted: "2020",
- * "2020-05", or "2020-05-01". This normalises to a comparable
- * date plus a human-readable label.
+ * "2020-05", or "2020-05-01" all occur. This normalizes to a comparable
+ * Date plus a human-readable label.
  */
 function parsePublishedDate(raw) {
   if (!raw) return null;
@@ -218,6 +220,7 @@ function parsePublishedDate(raw) {
   const day = match[3] ? parseInt(match[3], 10) : 1;
 
   const date = new Date(Date.UTC(year, month, day));
+  // valueOf() lets JS use < and > directly on these objects for comparisons
   return { date, label: raw, valueOf: () => date.getTime() };
 }
 
@@ -265,7 +268,16 @@ function renderResults() {
     panel.setAttribute("role", "region");
     panel.setAttribute("aria-labelledby", buttonId);
     panel.hidden = true;
-    panel.textContent = description;
+    // Google Books descriptions may include simple HTML formatting
+    // (b, i, br tags per the API docs). We sanitize with DOMPurify
+    // before inserting as HTML, since this content comes from an
+    // external API and should never be trusted outright.
+    panel.innerHTML =
+      typeof DOMPurify !== "undefined"
+        ? DOMPurify.sanitize(description, {
+            ALLOWED_TAGS: ["b", "i", "em", "strong", "br", "p"],
+          })
+        : escapeHtml(description); // fallback if DOMPurify failed to load
 
     button.addEventListener("click", () => {
       const expanded = button.getAttribute("aria-expanded") === "true";
