@@ -1,7 +1,6 @@
 /**
  * Google Books Search App
  *
- * Design notes (worth mentioning if asked in review):
  * - No backend: the Google Books API allows CORS on GET requests, so this
  *   calls the API directly from the browser.
  * - Pagination shows 10 results at a time. The API allows a max of 40
@@ -15,14 +14,14 @@
  */
 
 const API_BASE = "https://www.googleapis.com/books/v1/volumes";
-const BATCH_SIZE = 40; // Google Books API max per request
+const BATCH_SIZE = 40; // Google Books API max per request.
 const PAGE_SIZE = 10;
 
 const API_KEY = "AIzaSyD2R2GnPPFmhvDjClJpcU8CCMTx26acOsI";
 
 const state = {
   query: "",
-  items: [], // all items fetched so far for the current query
+  items: [], // All items fetched so far for the current query
   totalItems: 0,
   currentPage: 0, // 0-indexed
   lastResponseTimeMs: null,
@@ -206,8 +205,8 @@ function getMostCommonAuthor(authorCounts) {
 
 /**
  * Google Books publishedDate is inconsistently formatted: "2020",
- * "2020-05", or "2020-05-01" all occur. This normalizes to a comparable
- * Date plus a human-readable label.
+ * "2020-05", or "2020-05-01". This normalises to a comparable
+ * date plus a human-readable label.
  */
 function parsePublishedDate(raw) {
   if (!raw) return null;
@@ -219,7 +218,6 @@ function parsePublishedDate(raw) {
   const day = match[3] ? parseInt(match[3], 10) : 1;
 
   const date = new Date(Date.UTC(year, month, day));
-  // valueOf() lets JS use < and > directly on these objects for comparisons
   return { date, label: raw, valueOf: () => date.getTime() };
 }
 
