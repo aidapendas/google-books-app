@@ -60,7 +60,6 @@ google-books-app/
 ├── style.css            # Styling
 ├── app.js                # Search logic, API calls, rendering
 ├── config.js             # Your API key goes here
-├── config.example.js     # Template showing the expected format
 └── README.md
 ```
 
